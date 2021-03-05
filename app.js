@@ -179,6 +179,7 @@ app.get("/about", function(req, res){
 });
 
 let port = process.env.PORT;
+
 //let port equal the port that Heroku has set up
 if (port == null || port == "") {
   port = 3000;
