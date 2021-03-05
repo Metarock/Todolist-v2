@@ -19,7 +19,7 @@ app.use(express.static("public"));
 const password = "johnisaiah2000";
 
 //connect to mongoose locally only
-mongoose.connect("mongodb+srv://admin-john:"+ password +"@cluster0.lj0fi.mongodb.net/todolistDB?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-john:"+ password +"@cluster0.lj0fi.mongodb.net/todolistDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const itemSchema = new mongoose.Schema({
   name:{
