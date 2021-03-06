@@ -20,7 +20,7 @@ const password = "johnisaiah2000";
 var title = []; 
 
 //connect to mongoose locally only
-mongoose.connect("mongodb://localhost:27017/todolistDB", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb+srv://admin-john:"+ password +"@cluster0.lj0fi.mongodb.net/todolistDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const itemSchema = new mongoose.Schema({
   name:{
