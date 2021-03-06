@@ -2,7 +2,11 @@ html {
   background-color: #b4aee8;
   background-image: -webkit-linear-gradient(65deg, #ffe3fe 50%, #b4aee8 50%);
   min-height: 1000px;
-  font-family: 'helvetica neue';
+  font-family: 'helvetica';
+}
+
+body{
+  background-color: transparent;
 }
 
 h1 {
@@ -13,12 +17,28 @@ h1 {
 }
 
 .box {
-  max-width: 400px;
+  max-width: 500px;
   margin: 50px auto;
   background: white;
   border-radius: 5px;
   box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
 }
+
+.tab{
+  max-width: 500px;
+  margin: 50px auto; 
+  text-align: center;
+  background-color: #b4aee8;
+  color: #fff;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  border-width: 0; 
+  outline-style: none; 
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
 
 #heading {
   background-color: #b4aee8;
@@ -33,15 +53,19 @@ h1 {
 }
 
 .item-success{
-  color: #b4aee8
+  color: #b4aee8;
+}
+
+.item:last-child {
+  border-bottom: 0;
 }
 
 a.dropdown-item:focus{
   background-color: #e2f3e2ea;
 }
 
-.item:last-child {
-  border-bottom: 0;
+input[type="checkbox"]:checked{
+  background-color: #b4aee8;
 }
 
 input:checked+p {
@@ -56,10 +80,10 @@ input[type="checkbox"] {
 p {
   display: inline-block;
   margin: 0;
-  padding: 20px;
-  font-size: 20px;
-  font-weight: 200;
-  color: #00204a;
+  padding: 5px;
+  font-size: 1rem;
+  font-weight: 400;
+  color: #264653;
 }
 
 p.addnewlist{
@@ -76,7 +100,8 @@ form.item {
   margin-left: 20px;
 }
 
-button {
+/* this is the plus sign button */
+button.add {
   min-height: 50px;
   width: 50px;
   border-radius: 50%;
@@ -109,26 +134,12 @@ input[type="text"]:focus {
   opacity: 1;
 }
 
-footer {
+/* footer {
   color: white;
   color: rgba(0, 0, 0, 0.5);
   text-align: center;
-}
+} */
 
-.tab{
-  max-width: 500px;
-  margin: 50px auto; 
-  text-align: center;
-  background-color: #b4aee8;
-  color: #ffe3fe;
-  border-radius: 5px;
-  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
-  color: #ffe3fe;
-  border-width: 0; 
-  outline-style: none; 
-  font-size: 1.5rem;
-  font-weight: 700;
-}
 
 form.item {
   text-align: center;

@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
 
 const password = "johnisaiah2000";
+var title = []; 
 
 //connect to mongoose locally only
 mongoose.connect("mongodb://localhost:27017/todolistDB", {useNewUrlParser: true, useUnifiedTopology: true});
@@ -81,10 +82,19 @@ app.get("/", function(req, res) {
      res.redirect("/");
    }
    else{
-     console.log("Default items already added.")
-     console.log(items);
-     res.render("list", {listTitle: "Today", newListItems: items});
-     console.log("Done reading documents and inserted to javascript object");
+    List.find({}, (err, element) => {
+    
+      element.forEach((titties) => {
+  
+        if(title.length === 0){
+          title.push(titties.name);
+        }
+      })
+      console.log("Default items already added.")
+      console.log(items);
+      res.render("list", {listTitle: "Today", newListItems: items, titleArray: element});
+      console.log("Done reading documents and inserted to javascript object");
+    })
    }
  });
 });
@@ -116,6 +126,7 @@ app.post("/", function(req, res){
   }
 });
 
+
 //Delete
 app.post("/delete", (req,res) => {
   const checkItemID = req.body.checkBox;
@@ -142,11 +153,63 @@ app.post("/delete", (req,res) => {
   }
 });
 
+
+//add new item CUSTOM ADD IN THE HAMBURGER MENU 
+app.post("/add-new-list", (req, res) => {
+  const titleList = _.capitalize(req.body.newListName);
+
+  title.push(titleList);
+
+  if(titleList == "Today")
+  {
+    res.redirect("/");
+  }
+  else{ //if not go to this page
+      //add the list into the array
+      List.findOne({name: titleList}, (err,foundList) => {
+        if(err){
+          console.log(err);
+        }
+        else if(!foundList){
+          const add = new List({
+            name: titleList,
+            items: defaultItems
+          });
+
+          add.save(() => res.redirect('/' + titleList));
+        }
+      });
+  }
+  console.log(titleList);
+});
+
+//delete list 
+app.post("/delete-list", (req, res) => {
+
+    const deleteTitle = req.body.deleteListTitle;
+    const itemId = "";
+
+    List.deleteOne({name: deleteTitle}, (err) => {
+      if(err){
+        console.log(err);
+      }
+      else
+      {
+        console.log("Successfully deleted");
+        res.redirect("/");
+      }
+    })
+});
+
+
+
+
+
+
 //Express routing parameter
 app.get("/:userList", (req,res) => {
     //the capitalize function capitalizes the first letter
     userList = _.capitalize(req.params.userList);
-
     List.findOne({name: userList}, (err, foundList) => {
 
       if(err){
@@ -166,13 +229,22 @@ app.get("/:userList", (req,res) => {
       }
       else{
         //if found, render
-        res.render("list", {listTitle: foundList.name, newListItems: foundList.items});
+        List.find({}, (err, element) => {
+          element.forEach((titties) => {
+            
+            if(title.length === 0){
+              title.push(titties.name);
+            }
+          })
+          res.render("list", {listTitle: foundList.name, newListItems: foundList.items, titleArray: element});
+        })
       }
     });
 
     //save it into the list collection
     // list.save();
-})
+});
+
 
 app.get("/about", function(req, res){
   res.render("about");
