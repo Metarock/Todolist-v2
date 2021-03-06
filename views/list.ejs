@@ -1,10 +1,21 @@
 <%- include("header") -%>
 
-<div class="box" id="heading">
+<!-- <div class="box" id="heading">
   <h1 name="itemName"> <%= listTitle %> </h1>
+</div> -->
+
+<div class="tab">
+
+  <button class="menu_btn left" type="button" data-toggle="modal" data-target="#lists">
+      <i class="fas fa-bars fa-sm"></i>
+  </button>
+  <h1>Today</h1>
+  <button class="menu_btn right" type="button" data-toggle="modal" data-target="#listOptions"><i
+          class="fas fa-ellipsis-v fa-sm"></i></button>
 </div>
 
 <div class="box">
+
   <% newListItems.forEach((items) => { %>
     <form class="" action="/delete" method="post">
       <div class="item">
@@ -20,6 +31,97 @@
     <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
     <button type="submit" name="list" value="<%= listTitle %>">+</button>
   </form>
+</div>
+
+
+    <!-- add new item -->
+
+  </div>
+  <div class="modal fade" id="lists" tabindex="-1" role="dialog" aria-labelledby="lists"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+              <div class="modal-header">
+            <h5 class="modal-title" id="lists">List</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+              <!-- <form action="/add-new-list" method="post"> -->
+                  <div class="modal-body">  
+                      <!-- <div class="form-group"> -->
+                          <a class="dropdown-item" href="#" id="addNewListOption" data-toggle="modal" data-target="#createNewList" data-whatever="@mdo">
+                              <p class="addnewlist"><i class="far fa-edit"></i>&nbsp;&nbsp;Add New List</p>
+                          </a>
+                          <!-- Have a forloop here ejes -->
+                          <a class="dropdown-item" href="/">
+                              <p><i class="far fa-file-alt"></i>&nbsp;&nbsp;&nbsp;Today</p>
+                          </a>
+                      <!-- </div> -->
+                  </div>
+              <!-- </form> -->
+          </div>
+      </div>
+  </div>
+
+
+  <!--After pressing the three colon on the right side -->
+  <div class="modal fade" id="listOptions" tabindex="-1" role="dialog" aria-labelledby="delete" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Option</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <div class="form-group">
+                    <a class="dropdown-item" href="#" id="editListOption" data-toggle="modal"
+                        data-target="#editlistTitle" data-whatever="@mdo">
+                        <p><i class="fas fa-pencil-alt fa-sm"></i>&nbsp;&nbsp;Edit title</p>
+                    </a>
+                    <form action="/delete-list" method="post">
+                        <button type="submit" class="dropdown-item" href="#" name="deleteListTitle" value=Today>
+                            <p class="deleteList"><i class="far fa-trash-alt fa-sm"></i>&nbsp;&nbsp;Delete this list</p>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <div class="modal fade" id="createNewList" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div> -->
+            <form action="/add-new-list" method="post">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+
+                    <div class="form-group">
+                        <label for="recipient-name" class="col-form-label">List name</label>
+                        <input type="text" name="newListName" class="newList form-control" id="recipient-name">
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Confirm</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 
 <%- include("footer") -%>

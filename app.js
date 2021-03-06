@@ -19,7 +19,7 @@ app.use(express.static("public"));
 const password = "johnisaiah2000";
 
 //connect to mongoose locally only
-mongoose.connect("mongodb+srv://admin-john:"+ password +"@cluster0.lj0fi.mongodb.net/todolistDB", {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect("mongodb://localhost:27017/todolistDB", {useNewUrlParser: true, useUnifiedTopology: true});
 
 const itemSchema = new mongoose.Schema({
   name:{
@@ -179,11 +179,11 @@ app.get("/about", function(req, res){
 });
 
 let port = process.env.PORT;
-
 //let port equal the port that Heroku has set up
 if (port == null || port == "") {
   port = 3000;
 }
+// app.listen(port);
 
 app.listen(port, function() {
   console.log("Server started!!");

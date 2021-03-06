@@ -7,7 +7,9 @@ html {
 
 h1 {
   color: #ffe3fe;
-  padding: 10px;
+  display:inline-block;
+  width:360px;
+  font-size: 2rem;
 }
 
 .box {
@@ -30,6 +32,14 @@ h1 {
   border-bottom: 1px solid #ffe3fe;
 }
 
+.item-success{
+  color: #b4aee8
+}
+
+a.dropdown-item:focus{
+  background-color: #e2f3e2ea;
+}
+
 .item:last-child {
   border-bottom: 0;
 }
@@ -44,12 +54,22 @@ input[type="checkbox"] {
 }
 
 p {
+  display: inline-block;
   margin: 0;
   padding: 20px;
   font-size: 20px;
   font-weight: 200;
   color: #00204a;
 }
+
+p.addnewlist{
+  color:#b4aee8;
+}
+p.deleteList{
+
+  color:#7a1116;
+}
+
 
 form.item {
   text-align: center;
@@ -88,6 +108,161 @@ input[type="text"]:focus {
   color: grey;
   opacity: 1;
 }
+
+footer {
+  color: white;
+  color: rgba(0, 0, 0, 0.5);
+  text-align: center;
+}
+
+.tab{
+  max-width: 500px;
+  margin: 50px auto; 
+  text-align: center;
+  background-color: #b4aee8;
+  color: #ffe3fe;
+  border-radius: 5px;
+  box-shadow: 5px 5px 15px -5px rgba(0, 0, 0, 0.3);
+  color: #ffe3fe;
+  border-width: 0; 
+  outline-style: none; 
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+form.item {
+  text-align: center;
+  padding-left: 20px;
+}
+
+
+
+/* Buttons */
+/* !important means this is important, ignore subsequent rules , and any usual 
+specificity issues, apply this rule */
+.btn-success{
+  background-color: #b4aee8 !important;
+  border-color:#b4aee8 !important;
+}
+.btn-success:hover {
+  background-color: #a39bec !important;
+  border-color:#a39bec !important;
+}
+.btn-success:active {
+  background-color: #9b95d4 !important;
+  border-color:#9b95d4 !important;
+}
+
+/* add button */
+button.custom{
+  min-height: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 10%;
+  border-color: transparent;
+  background-color: thistle;
+  color: #fff;
+  border-width: 0;
+  outline-style: none;
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+button.customer:hover{
+  background-color: #b4aee8;
+}
+
+/*delete button */
+form.delete{
+  margin-left:auto;
+}
+
+form.delete button{
+  background-color: transparent;
+}
+
+div.item:hover form.delete button{
+  display: inline;
+}
+
+button.delete-btn:hover{
+  background-color :transparent;
+}
+
+/* menu button */
+.menu_btn{
+  width: 63px;
+  margin: 10px 0px;
+  background-color: transparent;
+  color: #f1f1f1;
+  border: none;
+  margin: 10px 0px;
+}
+
+.menu_btn .left{
+  margin-right:100px;
+}
+
+.menu_btn .right{
+  margin-left: auto;
+}
+
+button.menu_btn:hover{
+  background-color: transparent;
+  outline-style: none;
+}
+
+input.newItem[type="text"] {
+  text-align: left;
+  height: 60px;
+  top: 10px;
+  border: none;
+  background: transparent;    
+  width: 370px;
+  margin-left: 20px;
+  padding-left:5px;
+}
+
+input.newItem[type="text"]:focus {
+  outline: none;
+  box-shadow: inset 0 -3px 0 0 #b4aee8;
+}
+
+/*==== modal ====*/
+.modal{
+  user-select: none;
+}
+
+/*==== title/name modal ====*/
+.form-group{
+  margin-bottom: 0px;
+}
+.form-group em{
+  color:rgb(175, 175, 175);
+  font-size:0.8rem;
+}
+
+/*==== Delete Button List Names ====*/
+
+.deleteList{  
+  margin-left:auto;
+}
+
+.deleteList button{
+  background-color :transparent;
+  color: lightgray;
+  display:none;
+}
+
+#lists .dropdown-item .deleteList button{  
+  display: inline;
+
+}
+button.delete-btn:hover{
+  background-color :transparent;
+}
+
+
 
 footer {
   color: white;
