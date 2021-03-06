@@ -84,12 +84,12 @@ app.get("/", function(req, res) {
    else{
     List.find({}, (err, element) => {
     
-      element.forEach((titties) => {
+      // element.forEach((titties) => {
   
-        if(title.length === 0){
-          title.push(titties.name);
-        }
-      })
+      //   if(title.length === 0){
+      //     title.push(titties.name);
+      //   }
+      // })
       console.log("Default items already added.")
       console.log(items);
       res.render("list", {listTitle: "Today", newListItems: items, titleArray: element});
@@ -158,7 +158,7 @@ app.post("/delete", (req,res) => {
 app.post("/add-new-list", (req, res) => {
   const titleList = _.capitalize(req.body.newListName);
 
-  title.push(titleList);
+  // title.push(titleList);
 
   if(titleList == "Today")
   {
@@ -187,7 +187,6 @@ app.post("/add-new-list", (req, res) => {
 app.post("/delete-list", (req, res) => {
 
     const deleteTitle = req.body.deleteListTitle;
-    const itemId = "";
 
     List.deleteOne({name: deleteTitle}, (err) => {
       if(err){
@@ -201,7 +200,24 @@ app.post("/delete-list", (req, res) => {
     })
 });
 
+//edit title
+//Change it to a new title
+app.post("/edit-title", (req, res) => {
 
+  const getTitle = req.body.oldTitle;
+
+  const newTitle = req.body.newTitle;
+
+  List.updateOne({name: getTitle}, {name: newTitle}, (err) => {
+    if(err){
+      console.log(err);
+    }
+    else{
+      console.log("Successfuly edited "+ getTitle +" to:" + newTitle);
+      res.redirect("/" + newTitle);
+    }
+  })
+});
 
 
 
@@ -230,12 +246,12 @@ app.get("/:userList", (req,res) => {
       else{
         //if found, render
         List.find({}, (err, element) => {
-          element.forEach((titties) => {
+          // element.forEach((titties) => {
             
-            if(title.length === 0){
-              title.push(titties.name);
-            }
-          })
+          //   if(title.length === 0){
+          //     title.push(titties.name);
+          //   }
+          // })
           res.render("list", {listTitle: foundList.name, newListItems: foundList.items, titleArray: element});
         })
       }
